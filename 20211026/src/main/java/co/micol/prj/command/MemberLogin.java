@@ -21,7 +21,7 @@ public class MemberLogin implements Command {
 		vo.setId(request.getParameter("id")); // 폼에서 입력값을 vo 객체에 담음.
 		vo.setPassword(request.getParameter("password"));
 		
-		vo = memberDao.memberLogin(vo);
+		vo = memberDao.memberLogin(vo); // vo : 메소드(앞), 매개변수(뒤)
 		String page = null;
 		if(vo.getName() != null) {
 			request.setAttribute("member", vo);
