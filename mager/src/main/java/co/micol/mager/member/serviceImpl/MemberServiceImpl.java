@@ -58,7 +58,6 @@ public class MemberServiceImpl extends DAO implements MemberService {
 			psmt.setString(1, vo.getId());
 			rs = psmt.executeQuery();
 			if(rs.next()) {
-				vo = new MemberVO();
 				vo.setId(rs.getString("id"));
 				vo.setPassword(rs.getString("password"));
 				vo.setName(rs.getString("name"));
