@@ -7,7 +7,9 @@
   <packaging>war</packaging>
   
   <properties> <!-- 내부에서 사용할 변수를 설정 하는곳 -->
-  
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
   </properties>
   
   <dependencies> <!-- 필요한 외부 라이브러리 의존성 주입 -->
