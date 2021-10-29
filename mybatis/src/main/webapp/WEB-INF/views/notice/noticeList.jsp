@@ -5,11 +5,48 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>공지사항</title>
+<script type="text/javascript">
+	function CallNotice(n) {
+		frm.nid.value=n;
+		frm.submit();
+	}
+</script>
 </head>
+<jsp:include page="../home/header.jsp"/>
 <body>
-	<c:forEach items="${notices }" var="notice">
-		${notice.nid } : ${notice.name } : ${notice.title } : ${notice.writeDate } <br>
-	</c:forEach>
+<div align="center">
+	<div><h1>공지사항 목록</h1></div>
+	<div>
+		<table border="1">
+			<tr>
+				<th width = "100">글번호</th>
+				<th width = "150">작성자</th>
+				<th width = "250">글제목</th>
+				<th width = "150">작성일자</th>
+				<th width = "100">조회수</th>
+			</tr>
+			<c:forEach items="${notices }" var="notice">
+				<tr onmouseover='this.style.background="#fcecae";'
+					onmouseleave='this.style.background="#FFFFFF";'
+					onclick="CallNotice(${notice.nid })">
+					<td align="center">${notice.nid }</td>
+					<td align="center">${notice.name }</td>
+					<td align="center">${notice.title }</td>
+					<td align="center">${notice.writeDate }</td>
+					<td align="center">${notice.hit }</td>
+				</tr>
+			</c:forEach>
+		</table>
+	</div><br>
+	<div>
+		<button type="button" onclick="location.href='noticeForm.do'">글쓰기</button>
+	</div>
+	<div> <!-- 숨겨져 있는 폼 -->
+		<form id ="frm" action="noticeSelect.do" method="post">
+			<input type="hidden" id="nid" name="nid">
+		</form>
+	</div>
+</div>
 </body>
 </html>
