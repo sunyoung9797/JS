@@ -9,7 +9,7 @@
 <jsp:include page="../home/header.jsp"/>
 <body>
 <div align = "center">
-	<div><h1>${message }</h1></div>
+	<div><h2>${message }</h2></div>
 	<button type="button" onclick="location.href='memberLoginForm.do'">로그인</button>
 </div>
 </body>

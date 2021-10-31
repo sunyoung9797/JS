@@ -6,13 +6,15 @@
 <head>
 <meta charset="UTF-8">
 <title>멤버 목록</title>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 <jsp:include page="../home/header.jsp"/>
 <body>
 <div align="center">
-	<div><h1>나의 정보</h1></div>
+	<div><h2>멤버 목록</h2></div><br>
 	<div>
-		<table border ="1">
+		<table class="table table-striped">
 			<tr>
 				<th width="100">아 이 디</th>
 				<th width="100">패스워드</th>
@@ -21,7 +23,7 @@
 				<th width="150">전화번호</th>
 			</tr>
 			<c:forEach items = "${members }" var = "member">
-				<tr align="center">
+				<tr>
 					<td>${member.id }</td>
 					<td>${member.password }</td>
 					<td>${member.name }</td>

@@ -9,7 +9,7 @@
 <jsp:include page="../home/header.jsp"/>
 <body>
 <div align="center">
-	<div><h1>${message }</h1></div>
+	<div><h2>${message }</h2></div>
 </div>
 </body>
 </html>

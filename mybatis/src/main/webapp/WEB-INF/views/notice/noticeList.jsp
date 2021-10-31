@@ -12,14 +12,16 @@
 		frm.submit();
 	}
 </script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 <jsp:include page="../home/header.jsp"/>
 <body>
 <div align="center">
-	<div><h1>공지사항 목록</h1></div>
+	<div><h2>공지사항 목록</h2></div><br>
 	<div>
-		<table border="1">
-			<tr>
+		<table  class="table table-striped">
+			<tr align="center">
 				<th width = "100">글번호</th>
 				<th width = "150">작성자</th>
 				<th width = "250">글제목</th>
@@ -27,14 +29,14 @@
 				<th width = "100">조회수</th>
 			</tr>
 			<c:forEach items="${notices }" var="notice">
-				<tr onmouseover='this.style.background="#fcecae";'
+				<tr onmouseover='this.style.background="#c0c0c0";'
 					onmouseleave='this.style.background="#FFFFFF";'
 					onclick="CallNotice(${notice.nid })">
-					<td align="center">${notice.nid }</td>
-					<td align="center">${notice.name }</td>
-					<td align="center">${notice.title }</td>
-					<td align="center">${notice.writeDate }</td>
-					<td align="center">${notice.hit }</td>
+					<td>${notice.nid }</td>
+					<td>${notice.name }</td>
+					<td>${notice.title }</td>
+					<td>${notice.writeDate }</td>
+					<td>${notice.hit }</td>
 				</tr>
 			</c:forEach>
 		</table>

@@ -7,21 +7,21 @@
 <title>공지사항 세부내용</title>
 <script type="text/javascript">
 	function CallEdit(str) {
-		if(str == 'E') {
-			frm.action = "noticeEdit.do";
-		} else {
+		if(str == 'D') {
 			frm.action = "noticeDelete.do";
 		}
 		frm.submit();
 	}
 </script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 <jsp:include page="../home/header.jsp"/>
 <body>
 <div align="center">
-	<div><h1>공지사항 조회</h1></div>
+	<div><h2>공지사항 조회</h2></div><br>
 	<div>
-		<table border="1">
+		<table class="table table-bordered">
 			<tr>
 				<th width="70">글번호</th>
 				<td width="70" align="center">${notice.nid }</td>
@@ -46,7 +46,6 @@
 	</div><br>
 	<div>
 		<button type="button" onclick="location.href='noticeList.do'">목록</button>&nbsp;&nbsp;&nbsp;
-		<button type="button" onclick="CallEdit('E')">수정</button>&nbsp;&nbsp;&nbsp;
 		<button type="button" onclick="CallEdit('D')">삭제</button>
 	</div>
 	<div>
