@@ -24,11 +24,11 @@
 						var tel = data[i].tel;
 						var author = data[i].author;
 						var tr=$("<tr/>").append(
-							$("<td/>").text(id);
-							$("<td/>").text(name);
-							$("<td/>").text(address);
-							$("<td/>").text(tel);
-							$("<td/>").text(author);
+							$("<td/>").text(id),
+							$("<td/>").text(name),
+							$("<td/>").text(address),
+							$("<td/>").text(tel),
+							$("<td/>").text(author)
 						);
 						tb.append(tr);
 					}
@@ -53,14 +53,14 @@
 			</div>
 			<div class="card-body">
 				<div class="table-responsive">
-					<table id="example" class="display" style="width: 100%">
+					<table id="example" class="compact" style="width: 100%">
 						<thead>
 							<tr>
-								<th>id</th>
-								<th>name</th>
-								<th>address</th>
-								<th>tel</th>
-								<th>author</th>
+								<th>ID</th>
+								<th>Name</th>
+								<th>Address</th>
+								<th>Tel</th>
+								<th>Author</th>
 							</tr>
 						</thead>
 
