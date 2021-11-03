@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>My home</title>
 </head>
 <jsp:include page="header.jsp"/>
 <body>
