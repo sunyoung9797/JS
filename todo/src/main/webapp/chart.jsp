@@ -28,7 +28,7 @@
 			chartDraw(result)
 		})
         
-		function chartDraw(chartData) {
+		function chartDraw(chartData) { // 동기식일때는 함수 안씀
 			
 		// Create the data table.
         var data = new google.visualization.DataTable();
