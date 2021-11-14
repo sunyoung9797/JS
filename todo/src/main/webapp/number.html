@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+  <h1>숫자맞추기</h1>
+    <div id="guess">
+      <label id="label">값을 입력하세요:</label>
+      <input type="number" id="input" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"/>
+      <button type="button" id="btn" onclick="check()">클릭</button>
+    </div>
+
+    <div id="result">
+      <p id="guessResult"></p>
+      <p id="lastResult"></p>
+      <p id="lowOrHi"></p>
+    </div>
+
+    <script>
+      let random = Math.floor(Math.random() * 100) + 1;
+
+      let input = document.getElementById('input');
+      let btn = document.getElementById('btn');
+
+      let guessResult = document.getElementById('guessResult');
+      let lastResult = document.getElementById('lastResult');
+      let lowOrHi = document.getElementById('lowOrHi');
+
+      let count = 1;
+      let resetButton;
+      console.log(random);
+      
+      function check() {
+        let msg = input.value;
+        if(msg > 100 || msg < 1) {
+            alert("숫자를 1이상 100이하로 써주세요!!")           
+        } else {
+            lastResult.innerHTML += msg +' '; 
+            console.log(count);
+            
+            if(msg == random) {
+                alert("축하합니다!!");
+                gameover();
+            } else if(count == 10) {
+                gameover();
+            } else {
+                guessResult.innerHTML = "틀렸습니다!!"
+                if(msg > random) {
+                    lowOrHi.innerHTML = "더 낮추세요!!"
+                } else {
+                    lowOrHi.innerHTML = "더 높이세요!!"
+                }
+            }            
+            count++;
+        }
+      }
+      function gameover() {
+          alert("게임이 끝났습니다");
+          input.value = null;
+          guessResult.innerHTML = '';
+          lastResult.innerHTML = '';
+          lowOrHi.innerHTML = '';
+          count = null;
+          random = Math.floor(Math.random() * 100) + 1;
+          console.log(random);
+      }
+    </script>
+</body>
+</html>
