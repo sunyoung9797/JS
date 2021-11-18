@@ -143,6 +143,7 @@ input {
 fetch("/prj/todoSelect")
 .then(response => response.json())
 .then(result => {
+	console.log(result);
   //li태그 만들어서 ul태그 추가
   for(let todo of result) {
     //document.getElementById("myUL").innerHTML += `<li>${todo.contents}</li>`;
@@ -169,6 +170,7 @@ list.addEventListener('click', function(ev) {
     })
     .then(response => response.json())
     .then(result => {
+    	console.log(result);
       ev.target.classList.toggle('checked'); // toggle: checked 있으면 빼고 없으면 빼기
   })
   }
@@ -192,6 +194,7 @@ document.getElementsByClassName('addBtn')[0].addEventListener('click', function(
   })
   .then(response => response.json())
   .then(result => {
+	  console.log(result);
     newElement(result) //newElement() 호출
   })
 }) 
@@ -211,16 +214,18 @@ function newElement(todo) {
   
   var span = document.createElement("SPAN");
   var txt = document.createTextNode("\u00D7");
-  span.className = "close";  //클래스 여러개 이면 classlist.add 이런식으로 함
+  span.className = "close";  //클래스 여러개 이면 classList.add 이런식으로 함
   span.appendChild(txt);
   li.appendChild(span);
 
   span.onclick = function() {
+	  console.log(this);
       var li = this.parentElement;
       var no = li.getAttribute('data-no');	//data-no 속성을 읽기
       fetch("/prj/todoDelete?no="+no)	//서버에 삭제 요청
       .then(response => response.json())	//json 변환
       .then(result => {
+    	  console.log(result)
     	  li.remove();
       })	//li.remove(); //li 태그 삭제
   }
