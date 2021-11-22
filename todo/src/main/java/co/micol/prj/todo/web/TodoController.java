@@ -24,6 +24,7 @@ public class TodoController {
 	
 	@PostMapping("/todoInsert")
 	public TodoVO todoInsert(TodoVO vo) {
+		 
 		 mapper.todoInsert(vo);
 		 return vo;
 	}
