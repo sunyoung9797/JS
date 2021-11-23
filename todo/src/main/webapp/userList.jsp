@@ -134,6 +134,7 @@
 
 		//목록에서 폼으로 정보뜨게하기
 		function updClick(id) {
+			console.log(id);
 			$.ajax({
 				url: "./users",
 				method: "get",
@@ -142,7 +143,7 @@
 				},
 				dataType: "json"
 			}).done(result => {
-				//console.log(result);
+				console.log(result);
 				//console.log(result.id);
 				document.querySelector('[name="id"]').readOnly = true;
 				document.querySelector('[name="id"]').value = result.id;

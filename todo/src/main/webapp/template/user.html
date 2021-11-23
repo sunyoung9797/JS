@@ -73,13 +73,25 @@
             data() {
                 return {
                     users : [],
-                    user : {id:'',password:'',name:'',role:''}
+                    user : {id:'',password:'',name:'',role:''},
+                	presentindex : ''
                 }
             },
             methods : {
-            	btnUpd(){
-            		
+            	//조회
+            	btnUpd(index){
+            		var id = this.users[index].id;
+            		fetch("../users?id="+id)	//서버에 삭제 요청
+                 	.then(response => response.json())	//json 변환
+                    .then(result => {
+                    	this.user.id = result.id;
+                    	this.user.password = result.password;
+                    	this.user.name = result.name;
+                    	this.user.role = result.role;
+                    	this.presentindex = index;
+                    })
             	},
+            	//삭제
             	btnDel(index) {
             		console.log(index);
                     var id = this.users[index].id;
@@ -88,7 +100,62 @@
                  	.then(response => response.json())	//json 변환
                     .then(result => this.users.splice(index,1))
             		 //(index,1,'aa') 면 지워진 자리에 aa 들어감.
+            	},
+            	//등록
+            	userInsert() {
+            		var id = this.user.id;
+            		var password = this.user.password;
+            		var name = this.user.name;
+            		var role = this.user.role;
+                    fetch("../insertUser",{
+          		    method : 'POST',
+          		    headers: {
+          		          // 'Content-Type': 'application/json',
+          		           'Content-Type': 'application/x-www-form-urlencoded'
+          		    },
+          		    body : "id=" + id + "&password=" + password + "&name=" + name + "&role=" + role
+           		  })
+          		  .then(response => response.json())
+          		  .then(result => {
+          			  console.log(result);
+                  		this.users.push(result);
+                 		this.result = '';				
+          		  })
+            	},
+            	//수정
+            	userUpdate() {
+            		var index = this.presentindex;
+            		var id = this.user.id;
+            		var password = this.user.password;
+            		var name = this.user.name;
+            		var role = this.user.role;
+                    fetch("../updateUser",{
+          		    method : 'POST',
+          		    headers: {
+          		          // 'Content-Type': 'application/json',
+          		           'Content-Type': 'application/x-www-form-urlencoded'
+          		    },
+          		    body : "id=" + id + "&password=" + password + "&name=" + name + "&role=" + role
+           		  })
+          		  .then(response => response.json())
+          		  .then(result => {
+          			  console.log(result);
+          			  if(this.users[index].id == result.id) {
+	          			  this.users[index].id = result.id;
+	                	  this.users[index].password = result.password;
+	                	  this.users[index].name = result.name;
+	                	  this.users[index].role = result.role;				 
+          			  }
+          		  })
+            	},
+            	//
+            	userInit() {
+            		this.user.id = "";
+            		this.user.password = "";
+            		this.user.name = "";
+            		this.user.role = "";
             	}
+            	
             },
             mounted () {
                 fetch("../userList")
