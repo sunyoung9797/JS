@@ -210,7 +210,8 @@ input {
       },
       todoCheck(index) {
     	//ajax (해보기)
-    	
+    	var no = this.todos[index].no;
+    	var todoyn = this.todos[index].todoyn;
     	fetch("../todoUpdate",{
 	      method : 'POST',
 	      headers: {
@@ -221,7 +222,7 @@ input {
 	    })
 	    .then(response => response.json())
 	    .then(() => {
-        	this.todos[index].todoyn = this.todos[index].todoyn == '1'? '0': '1';
+        	todoyn = todoyn == '1'? '0': '1';
 	  	})
         // yn = this.todos[index].todoyn;
         // if(yn == 0) {
