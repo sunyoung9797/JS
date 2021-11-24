@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import co.micol.prj.user.mapper.UserMapper;
 import co.micol.prj.user.vo.UserVO;
 
+@CrossOrigin(origins = {"http://localhost:3000"},maxAge=3600)
 @RestController
 public class RestfulUserController {
 	@Autowired
