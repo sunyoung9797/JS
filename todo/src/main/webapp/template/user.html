@@ -33,7 +33,7 @@
                 </div>
                 <div class="btn-group">
                     <input type="button" class="btn btn-primary" value="등록" id="btnInsert" @click="userInsert"/>
-                    <input type="button" class="btn btn-primary" value="수정" id="btnUpdate" @click="userUpdate"/>
+                    <input type="button" class="btn btn-primary" value="수정" id="btnUpdate" @click="userUpdate(user)"/>
                     <input type="button" class="btn btn-primary" value="초기화" id="btnInit" @click="userInit"/>
                 </div>
             </form>
@@ -52,11 +52,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="(userlist,index) in users">
-                        <td class="text-center">{{userlist.id}}</td>
-                        <td class="text-center">{{userlist.password}}</td>
-                        <td class="text-center">{{userlist.name}}</td>
-                        <td class="text-center">{{userlist.role}}</td>
+                    <tr v-for="(user,index) in users">
+                        <td class="text-center">{{user.id}}</td>
+                        <td class="text-center">{{user.password}}</td>
+                        <td class="text-center">{{user.name}}</td>
+                        <td class="text-center">{{user.role}}</td>
                         <td class="text-center">
                             <button class="btnUpd" @click="btnUpd(index)">조회</button>
                             <button class="btnDel" @click="btnDel(index)">삭제</button>
@@ -74,7 +74,7 @@
                 return {
                     users : [],
                     user : {id:'',password:'',name:'',role:''},
-                	presentindex : ''
+                	//presentindex : ''
                 }
             },
             methods : {
@@ -84,11 +84,8 @@
             		fetch("../users?id="+id)	//서버에 삭제 요청
                  	.then(response => response.json())	//json 변환
                     .then(result => {
-                    	this.user.id = result.id;
-                    	this.user.password = result.password;
-                    	this.user.name = result.name;
-                    	this.user.role = result.role;
-                    	this.presentindex = index;
+                    	this.user = {...result};
+                    	//this.presentindex = index;
                     })
             	},
             	//삭제
@@ -124,7 +121,8 @@
             	},
             	//수정
             	userUpdate() {
-            		var index = this.presentindex;
+            		console.log(this.user);
+            		//var index = this.presentindex;
             		var id = this.user.id;
             		var password = this.user.password;
             		var name = this.user.name;
@@ -139,12 +137,13 @@
            		  })
           		  .then(response => response.json())
           		  .then(result => {
-          			  console.log(result);
-          			  if(this.users[index].id == result.id) {
-	          			  this.users[index].id = result.id;
-	                	  this.users[index].password = result.password;
-	                	  this.users[index].name = result.name;
-	                	  this.users[index].role = result.role;				 
+          			  for(i=0; i<this.users.length; i++) {
+	          			  if(this.users[i].id == id) {
+		          			  //this.user.id = result.id;
+		                	  this.users[i].password = password;
+		                	  this.users[i].name = name;
+		                	  this.users[i].role = role;				 
+	          			  }         				  
           			  }
           		  })
             	},
