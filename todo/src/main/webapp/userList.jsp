@@ -181,6 +181,8 @@
 			.then(response => response.json())
 			.then(result => {
 				console.log(result);
+				console.log(result.id);
+				console.log(id);
 				var tr = document.getElementsByClassName(id)[0];
 				console.log(tr);
 				if (tr.getAttribute("data-id") == id) {
